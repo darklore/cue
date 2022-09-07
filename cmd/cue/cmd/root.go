@@ -359,7 +359,9 @@ func addSubcommands(cmd *Command, sub map[string]*subSpec, args []string, isHelp
 func isCommandName(s string) bool {
 	return !strings.Contains(s, `/\`) &&
 		!strings.HasPrefix(s, ".") &&
-		!strings.HasSuffix(s, ".cue")
+		!strings.HasSuffix(s, ".cue") &&
+		// hidden command for cobra shell completion
+		s != "__complete"
 }
 
 type panicError struct {
